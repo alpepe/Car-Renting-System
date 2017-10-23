@@ -1,0 +1,43 @@
+<h2>Choose a car and rent it</h2>
+
+<form action="/searchingModel" method="GET">
+  <fieldset>
+    <legend>Search by model:</legend>
+
+    <label for="name">Model:</label>
+    <input type="text" name="model">
+    <input type="submit"><br>
+</fieldset>
+
+
+</form>
+  <br>
+    <br>
+    <a href="/ViewAllCars?page={{pageObj.prevPage}}">Prev page</a>
+    <a href="/ViewAllCars?page={{pageObj.nextPage}}">Next page</a>
+
+    <br> <br>
+    {{#each allCar}}
+        <h3>Model:</h3>
+        <p>{{this.model}}</p>
+
+        <h3>image:</h3>
+        <p><img src="{{this.image}}"></p>
+
+        <h3>Price:</h3>
+        <p>{{this.price}}</p>
+
+        <h3>Year:</h3>
+        <p>{{this.year}}</p>
+        <a href="/carDetails/{{this._id}}"><b>TAKE IT THIS CAR</b></a><br>
+        __________________________________
+        <br>
+
+    {{/each}}
+
+
+    <a href="/ViewAllCars?page={{pageObj.prevPage}}">Prev page</a>
+    <a href="/ViewAllCars?page={{pageObj.nextPage}}">Next page</a>
+
+
+

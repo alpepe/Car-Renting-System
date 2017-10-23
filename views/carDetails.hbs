@@ -1,0 +1,29 @@
+<h1>{{foundCar.model}}</h1>
+
+
+<br> <br>
+        <h3>Model:</h3>
+        <p>{{foundCar.model}}</p>
+
+        <h3>image:</h3>
+        <p><img src="{{foundCar.image}}"></p>
+
+        <h3>Price:</h3>
+        <p>{{foundCar.price}}</p>
+
+        <h3>Year:</h3>
+        <p>{{foundCar.year}}</p>
+
+        <br><br>
+        
+
+        <form action="/takeCar" method="POST">
+                <fieldset>
+                <legend>Date of rent:</legend>
+                <input type="date" name="dateOfRental">               
+                <legend>Days of rental:</legend>
+                <input type="number" name="daysOfRental">
+                <input type="text" name="carId" value="{{foundCar._id}}" style="display:none"><br><br>
+                <input type="submit" value="RENTS NOW">
+                </fieldset>
+        </form>

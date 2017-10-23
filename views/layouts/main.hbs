@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Demo Server</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/ViewAllCars?page=0">View cars</a></li>
+                 {{#if currentUser.isAdmin}}
+                    <li><a href="/about">About</a></li>
+                 {{/if}}
+                <li><a href="/contact">Contact</a></li>
+            
+                {{#if currentUser}}
+                    {{#if currentUser.isAdmin}}
+                        <li><a href="/addCar">Add new car</a></li>
+                    {{/if}}
+                    <li>{{currentUser.username}}</li>
+                    <li>
+                        <!-- правим logout чрез пост заявка, за да не влиза в back(history) -->
+                        <form id="logout-form" action="/logout" method="post"></form>
+                        <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                    </li>
+                    <li><a href="/profil/{{currentUser.id}}">Profil</a></li>
+                {{else}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {{/if}}
+            </ul>
+        </header>
+        <main>
+            {{#if globalError}}
+            <span>{{globalError}}</span> 
+            {{/if}} 
+            
+            {{{body}}}
+        </main>
+    </div>
+</body>
+
+</html>
