@@ -1,33 +1,21 @@
-* {
-    padding: 0;
-    margin: 0
-}
 
-header {
-    margin-bottom: 2em;
-}
-
-.container {
-    padding-left: 25%
-}
-
-.menu {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.menu li {
+#logout, #logout-form{
     display: inline-block
 }
-
-.menu li:after {
-    content: "\00a0";
+.home-page-imgages{
+    width: 320px;
 }
-
-.error {
-    color: red;
+.car-section{
+    padding: 15px;
+    
+    box-shadow: 5px 5px 5px #888888;
+    border-radius: 25px;
+    margin-bottom: 20px;
 }
-fieldset {
-    padding: 25px;
-    margin: 40px
+.form-inline{
+    float: right;
+}
+.home-title{
+    display: inline-block;
+    margin-top: 50px
 }

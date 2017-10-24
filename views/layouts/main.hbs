@@ -3,39 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <title>My Demo Server</title>
     <link href="/css/site.css" type="text/css" rel="stylesheet">
+    <!--Bootstarp-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/ViewAllCars?page=0">View cars</a></li>
-                 {{#if currentUser.isAdmin}}
-                    <li><a href="/about">About</a></li>
-                 {{/if}}
-                <li><a href="/contact">Contact</a></li>
-            
-                {{#if currentUser}}
-                    {{#if currentUser.isAdmin}}
-                        <li><a href="/addCar">Add new car</a></li>
-                    {{/if}}
-                    <li>{{currentUser.username}}</li>
-                    <li>
-                        <!-- правим logout чрез пост заявка, за да не влиза в back(history) -->
-                        <form id="logout-form" action="/logout" method="post"></form>
-                        <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
-                    </li>
-                    <li><a href="/profil/{{currentUser.id}}">Profil</a></li>
-                {{else}}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                {{/if}}
-            </ul>
+        <header class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">CAR RENTAL</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                        {{#if currentUser.isAdmin}}
+                            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        {{/if}}
+                        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    
+                        {{#if currentUser}}
+                            {{#if currentUser.isAdmin}}
+                                <li class="nav-item"><a class="nav-link" href="/addCar">Add new car</a></li>
+                            {{/if}}
+                            <li class="nav-item"><a class="nav-link" href="/profil/{{currentUser.id}}">My cars</a></li>
+                        {{else}}
+                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        {{/if}}
+                    </ul>
+            {{#if currentUser}}
+                <span class="navbar-text"> 
+                    <span>|    Welcome, {{currentUser.username}}    |</span>
+                    <!-- правим logout чрез пост заявка, за да не влиза в back(history) -->
+                    <form id="logout-form" action="/logout" method="post"></form>
+                    <a id="logout" class="nav-link" href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                </span>
+            {{/if}}
+            </div>
+        </nav>
         </header>
-        <main>
+        <main class="container">
             {{#if globalError}}
             <span>{{globalError}}</span> 
             {{/if}} 

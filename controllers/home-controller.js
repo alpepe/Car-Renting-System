@@ -3,10 +3,12 @@ const Car = require('mongoose').model('Car')
 module.exports = {
     index: (req, res) => {
         let page = Number(req.query.page)
-
+        if(Object.keys(req.query).length === 0){
+            page = 0
+        }
+        console.log(req.query)
         let prevPage = page - 1
         let nextPage = page + 1
-
         /*зареждаме всички коли
         .взомаме само тези на които проартито  ('isRendet') е false
         .сортираме
